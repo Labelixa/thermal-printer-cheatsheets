@@ -48,8 +48,8 @@ field — forget it and the following commands are swallowed as field data.
 | `^FDveri` | **Field Data** — Carries the text or barcode data to be printed. | `^FDMerhaba Dünya` |
 | `^FHa` | **Field Hexadecimal Indicator** — Enables _XX hex escapes inside the following ^FD (for special characters). | `^FH^FDTa_C4_9Fdelen^FS` |
 | `^Afo,h,w` | **Font Selection** — Selects the font, orientation and size. ^A0 is the scalable font. | `^A0N,50,40` |
-| `^FBa,b,c,d` | **Field Block** — Lays text out as a word-wrapped block of a given width, with justification. | `^FB600,3,0,C` |
-| `^FWr` | **Field Orientation** — Sets the default rotation for the fields that follow (N/R/I/B). | `^FWR` |
+| `^FBa,b,c,d,e` | **Field Block** — Lays text out as a word-wrapped block of a given width, with justification. | `^FB600,3,0,C` |
+| `^FWr,z` | **Field Orientation** — Sets the default rotation for the fields that follow (N/R/I/B). | `^FWR` |
 | `^FR` | **Field Reverse Print** — Prints the next field in reverse: light on a dark background. | `^FR^GB100,100,100^FS` |
 | `^FVa` | **Field Variable** — Carries field data as a variable; the engine treats it the same way as ^FD. | `^FO50,50^FVSIPARIS-1^FS` |
 
@@ -57,7 +57,7 @@ field — forget it and the following commands are swallowed as field data.
 
 | Syntax | Command | Example |
 | --- | --- | --- |
-| `^GBw,h,t,c` | **Graphic Box** — Draws a rectangular box or a line (width, height, thickness). | `^GB200,80,3` |
+| `^GBw,h,t,c,r` | **Graphic Box** — Draws a rectangular box or a line (width, height, thickness). | `^GB200,80,3` |
 | `^GCd,t,c` | **Graphic Circle** — Draws a circle (diameter, thickness). | `^GC120,4` |
 | `^GDw,h,t,c,o` | **Graphic Diagonal Line** — Draws a diagonal line. | `^GD100,100,3` |
 | `^GEw,h,t,c` | **Graphic Ellipse** — Draws an ellipse (width, height, thickness). | `^GE120,80,3` |
@@ -74,29 +74,30 @@ field — forget it and the following commands are swallowed as field data.
 | `^BQa,b,c,d` | **QR Code** — A QR code. The data is normally given with the ^FDQA,... prefix. | `^BQN,2,6` |
 | `^BXo,h,s,c,r,f,g,a` | **Data Matrix** — A Data Matrix 2D barcode — a lot of data in a very small area. | `^BXN,4,200` |
 | `^B3o,e,h,f,g` | **Code 39** — Code 39 — a linear barcode encoding uppercase letters and digits. | `^B3N,N,60,Y,N` |
-| `^B7o,h,s` | **PDF417** — A PDF417 stacked barcode — high data capacity across multiple rows. | `^B7N,2,5` |
-| `^B1o,h` | **Code 11** — Code 11 (USD-8) — telecom and laboratory labels. | `^B1N,100^FD12345678^FS` |
-| `^B2o,h` | **Interleaved 2/5** — Interleaved 2 of 5 — numeric data in digit pairs. | `^B2N,100^FD12345678^FS` |
-| `^B8o,h` | **EAN-8** — EAN-8 — short retail code for small packaging. | `^B8N,100^FD12345678^FS` |
-| `^B9o,h` | **UPC-E** — UPC-E — compressed UPC for small packaging. | `^B9N,100^FD12345678^FS` |
-| `^BAo,h` | **Code 93** — Code 93 — the denser successor to Code 39. | `^BAN,100^FD12345678^FS` |
-| `^BIo,h` | **Industrial 2/5** — Industrial 2 of 5 — numeric only, industrial use. | `^BIN,100^FD12345678^FS` |
-| `^BJo,h` | **Standard 2/5** — Standard 2 of 5 — numeric only. | `^BJN,100^FD12345678^FS` |
-| `^BKo,h` | **Codabar** — Codabar — blood banks, libraries, courier labels. | `^BKN,100^FD12345678^FS` |
-| `^BMo,h` | **MSI** — MSI Plessey — shelf and inventory labels. | `^BMN,100^FD12345678^FS` |
-| `^BRo,h` | **GS1 DataBar** — GS1 DataBar (RSS Expanded) — small retail and fresh food. | `^BRN,100^FD12345678^FS` |
-| `^BUo,h` | **UPC-A** — UPC-A — the North American retail standard. | `^BUN,100^FD12345678^FS` |
-| `^B0o` | **Aztec** — Aztec Code — 2D, needs no quiet zone. | `^B0N^FDLABELIXA^FS` |
-| `^BOo` | **Aztec** — Aztec Code (^BO spelling) — produces the same symbology as ^B0. | `^BON^FDLABELIXA^FS` |
-| `^BDo` | **MaxiCode** — MaxiCode — the symbology on UPS shipping labels. | `^BDN^FDLABELIXA^FS` |
-| `^BFo` | **MicroPDF417** — MicroPDF417 — PDF417 compressed for narrow space. | `^BFN^FDLABELIXA^FS` |
+| `^B7o,h,s,c,r,t` | **PDF417** — A PDF417 stacked barcode — high data capacity across multiple rows. | `^B7N,2,5` |
+| `^B1o,e,h,f,g` | **Code 11** — Code 11 (USD-8) — telecom and laboratory labels. | `^B1N,N,100,Y,N^FD12345678^FS` |
+| `^B2o,h,f,g,e` | **Interleaved 2/5** — Interleaved 2 of 5 — numeric data in digit pairs. | `^B2N,100,Y,N,N^FD12345678^FS` |
+| `^B8o,h,f,g` | **EAN-8** — EAN-8 — short retail code for small packaging. | `^B8N,100,Y,N^FD12345678^FS` |
+| `^B9o,h,f,g,e` | **UPC-E** — UPC-E — compressed UPC for small packaging. | `^B9N,100,Y,N,N^FD12345678^FS` |
+| `^BAo,h,f,g,e` | **Code 93** — Code 93 — the denser successor to Code 39. | `^BAN,100,Y,N,N^FD12345678^FS` |
+| `^BIo,h,f,g` | **Industrial 2/5** — Industrial 2 of 5 — numeric only, industrial use. | `^BIN,100,Y,N^FD12345678^FS` |
+| `^BJo,h,f,g` | **Standard 2/5** — Standard 2 of 5 — numeric only. | `^BJN,100,Y,N^FD12345678^FS` |
+| `^BKo,e,h,f,g,k,l` | **Codabar** — Codabar — blood banks, libraries, courier labels. | `^BKN,N,100,Y,N,A,A^FD12345678^FS` |
+| `^BMo,e,h,f,g,e2` | **MSI** — MSI Plessey — shelf and inventory labels. | `^BMN,N,100,Y,N,N^FD12345678^FS` |
+| `^BUo,h,f,g,e` | **UPC-A** — UPC-A — the North American retail standard. | `^BUN,100,Y,N,N^FD12345678^FS` |
+| `^BRa,b,c,d,e,f` | **GS1 DataBar** — GS1 DataBar (RSS Expanded) — small retail and fresh food. | `^BRN,1,3,1,100^FD0123456789012^FS` |
+| `^B0o,m,c,d,e,f,g` | **Aztec** — Aztec Code — 2D, needs no quiet zone. | `^B0N^FDLABELIXA^FS` |
+| `^BOo,m,c,d,e,f,g` | **Aztec** — Aztec Code (^BO spelling) — produces the same symbology as ^B0. | `^BON^FDLABELIXA^FS` |
+| `^BFo,h,m` | **MicroPDF417** — MicroPDF417 — PDF417 compressed for narrow space. | `^BFN^FDLABELIXA^FS` |
+| `^BDm,n,t` | **MaxiCode** — MaxiCode — the symbology on UPS shipping labels. | `^BD2,1,1^FDLABELIXA^FS` |
 
 ## Advanced
 
 | Syntax | Command | Example |
 | --- | --- | --- |
 | `^SNv,n,z` | **Serialisation Data** — Serialises the field data across a batch with a start value, an increment and padding. | `^SN1000,1,Y` |
-| `^PQq` | **Print Quantity** — Sets how many copies of the same label are produced. | `^PQ4` |
+| `^PQq,p,r,o,e` | **Print Quantity** — Sets how many copies of the same label are produced. | `^PQ4` |
+| `^MUa,b,c` | **Set Units of Measurement** — Selects the unit used by the commands that follow; with a base and target dot density the printer rescales the format between resolutions. | `^MUd,203,300` |
 | `^FNn` | **Field Number** — A variable field placeholder in templates (used with ^DF and ^XF). | `^FN1` |
 | `^DFd:o.x` | **Download Format** — Stores a label format in memory as a template. | `^DFR:SABLON.ZPL` |
 | `^XFd:o.x` | **Recall Format** — Recalls a stored template and fills its ^FN fields with values. | `^XFR:SABLON.ZPL` |
@@ -134,10 +135,52 @@ warnings against the Labelixa engine — paste one into any ZPL viewer:
 ^XA^PW609^LL406^FO40,40^A0N,60,60^FDBIG^FS^FO40,120^A0N,28,28^FDsmall line^FS^XZ
 ```
 
+### `^B0`
+
+```zpl
+^XA^PW609^LL406^FO60,60^B0N,6,N^FDAZTEC-DEMO^FS^XZ
+```
+
+### `^B1`
+
+```zpl
+^XA^PW609^LL406^FO40,60^BY2^B1N,N,120,Y,N^FD123456^FS^XZ
+```
+
+### `^B2`
+
+```zpl
+^XA^PW609^LL406^FO40,60^BY2^B2N,120,Y,N,N^FD1234567890^FS^XZ
+```
+
 ### `^B3`
 
 ```zpl
 ^XA^PW609^LL406^FO40,60^BY2^B3N,N,120,Y,N^FDSKU12345^FS^XZ
+```
+
+### `^B7`
+
+```zpl
+^XA^PW609^LL406^FO40,60^B7N,5,5,,,N^FDPDF417-DEMO^FS^XZ
+```
+
+### `^B8`
+
+```zpl
+^XA^PW609^LL406^FO120,60^BY3^B8N,120,Y,N^FD1234567^FS^XZ
+```
+
+### `^B9`
+
+```zpl
+^XA^PW609^LL406^FO120,60^BY3^B9N,120,Y,N^FD123456^FS^XZ
+```
+
+### `^BA`
+
+```zpl
+^XA^PW609^LL406^FO40,60^BY2^BAN,120,Y,N,N^FDCODE93DEMO^FS^XZ
 ```
 
 ### `^BC`
@@ -146,16 +189,76 @@ warnings against the Labelixa engine — paste one into any ZPL viewer:
 ^XA^PW609^LL406^FO40,60^BY2^BCN,140,Y,N,N^FDCODE128-DEMO^FS^XZ
 ```
 
+### `^BD`
+
+```zpl
+^XA^PW609^LL406^FO60,60^BD2,1,1^FD001840152382802^FS^XZ
+```
+
 ### `^BE`
 
 ```zpl
 ^XA^PW609^LL406^FO120,60^BY2^BEN,140,Y,N^FD123456789012^FS^XZ
 ```
 
+### `^BF`
+
+```zpl
+^XA^PW609^LL406^FO40,60^BFN,5,1^FDMICROPDF^FS^XZ
+```
+
+### `^BI`
+
+```zpl
+^XA^PW609^LL406^FO40,60^BY2^BIN,120,Y,N^FD1234567890^FS^XZ
+```
+
+### `^BJ`
+
+```zpl
+^XA^PW609^LL406^FO40,60^BY2^BJN,120,Y,N^FD1234567890^FS^XZ
+```
+
+### `^BK`
+
+```zpl
+^XA^PW609^LL406^FO40,60^BY2^BKN,N,120,Y,N,A,A^FDA12345B^FS^XZ
+```
+
+### `^BM`
+
+```zpl
+^XA^PW609^LL406^FO40,60^BY2^BMN,B,120,Y,N,N^FD1234567^FS^XZ
+```
+
+### `^BO`
+
+```zpl
+^XA^PW609^LL406^FO60,60^BON,6,N^FDAZTEC-DEMO^FS^XZ
+```
+
 ### `^BQ`
 
 ```zpl
 ^XA^PW609^LL406^FO180,60^BQN,2,6^FDQA,SAMPLE-QR-DATA^FS^XZ
+```
+
+### `^BR`
+
+```zpl
+^XA^PW609^LL406^FO40,30^A0N,24,24^FDb=1 Omnidirectional^FS^FO40,60^BRN,1,3,1,90^FD0123456789012^FS^FO40,190^A0N,24,24^FDb=6 Expanded (AI)^FS^FO40,220^BRN,6,3,1,90^FD[01]12345678901231^FS^XZ
+```
+
+### `^BU`
+
+```zpl
+^XA^PW609^LL406^FO100,60^BY3^BUN,120,Y,N^FD12345678901^FS^XZ
+```
+
+### `^BX`
+
+```zpl
+^XA^PW609^LL406^FO60,60^BXN,6,200^FDDATAMATRIX-DEMO^FS^XZ
 ```
 
 ### `^BY`
@@ -176,10 +279,22 @@ warnings against the Labelixa engine — paste one into any ZPL viewer:
 ^XA^PW609^LL406^CI28^FO40,60^A0N,40,40^FDGuvenli Olcum - Grosse^FS^XZ
 ```
 
+### `^FB`
+
+```zpl
+^XA^PW609^LL406^FO40,50^A0N,28,28^FB520,4,0,L,0^FDUzun bir metin blogu otomatik olarak satirlara bolunur ve verilen genislige sigar.^FS^XZ
+```
+
 ### `^FD`
 
 ```zpl
 ^XA^PW609^LL406^FO50,50^A0N,40,40^FDHELLO LABEL^FS^XZ
+```
+
+### `^FH`
+
+```zpl
+^XA^PW609^LL406^FO40,60^A0N,40,40^FH^FD_48_45_58 HEX^FS^XZ
 ```
 
 ### `^FO`
@@ -194,10 +309,100 @@ warnings against the Labelixa engine — paste one into any ZPL viewer:
 ^XA^PW609^LL406^FO30,30^FR^GB540,110,110^FS^FO60,60^A0N,50,50^FDREVERSED^FS^XZ
 ```
 
+### `^FS`
+
+```zpl
+^XA^PW609^LL406^FO40,40^A0N,40,40^FDBIRINCI^FS^FO40,120^A0N,40,40^FDIKINCI^FS^XZ
+```
+
+### `^FT`
+
+```zpl
+^XA^PW609^LL406^FT40,200^A0N,44,44^FDTYPESET TABANI^FS^XZ
+```
+
+### `^FV`
+
+```zpl
+^XA^PW609^LL406^FO40,60^A0N,40,40^FVDEGISKEN ALAN^FS^XZ
+```
+
+### `^FW`
+
+```zpl
+^XA^PW609^LL406^FWR^FO60,40^A0N,40,40^FDDONDURULMUS^FS^FWN^FO300,40^A0N,40,40^FDNORMAL^FS^XZ
+```
+
+### `^FX`
+
+```zpl
+^XA^PW609^LL406^FXBu bir yorumdur ve basilmaz^FS^FO40,60^A0N,40,40^FDYORUM SONRASI^FS^XZ
+```
+
 ### `^GB`
 
 ```zpl
 ^XA^PW609^LL406^FO30,30^GB540,340,4^FS^FO60,60^GB200,100,2^FS^XZ
+```
+
+### `^GC`
+
+```zpl
+^XA^PW609^LL406^FO120,60^GC220,6,B^FS^XZ
+```
+
+### `^GD`
+
+```zpl
+^XA^PW609^LL406^FO60,60^GD400,240,6,B,R^FS^XZ
+```
+
+### `^GE`
+
+```zpl
+^XA^PW609^LL406^FO60,60^GE400,240,6,B^FS^XZ
+```
+
+### `^LH`
+
+```zpl
+^XA^PW609^LL406^LH30,20^FO40,60^A0N,40,40^FDBASLANGIC KAYDIRILDI^FS^XZ
+```
+
+### `^LL`
+
+```zpl
+^XA^PW609^LL300^FO40,60^A0N,40,40^FDUZUNLUK 300^FS^XZ
+```
+
+### `^LR`
+
+```zpl
+^XA^PW609^LL406^FO30,30^GB540,120,120^FS^LRY^FO60,60^A0N,50,50^FDTERS^FS^LRN^XZ
+```
+
+### `^LS`
+
+```zpl
+^XA^PW609^LL406^LS20^FO40,60^A0N,40,40^FDSOLA KAYDIRMA^FS^XZ
+```
+
+### `^PW`
+
+```zpl
+^XA^PW480^LL406^FO40,60^A0N,40,40^FDGENISLIK 480^FS^XZ
+```
+
+### `^XA`
+
+```zpl
+^XA^PW609^LL406^FO40,60^A0N,40,40^FDFORMAT BASLANGICI^FS^XZ
+```
+
+### `^XZ`
+
+```zpl
+^XA^PW609^LL406^FO40,60^A0N,40,40^FDFORMAT SONU^FS^XZ
 ```
 
 ## Notes on honesty

@@ -12,9 +12,9 @@ implying full support.
 
 | Language | Commands | Sheet |
 | --- | --- | --- |
-| ZPL | 67 | [zpl-cheatsheet.md](zpl-cheatsheet.md) |
+| ZPL | 68 | [zpl-cheatsheet.md](zpl-cheatsheet.md) |
 | TSPL | 17 | [tspl-cheatsheet.md](tspl-cheatsheet.md) |
-| EPL | 15 | [epl-cheatsheet.md](epl-cheatsheet.md) |
+| EPL | 23 | [epl-cheatsheet.md](epl-cheatsheet.md) |
 | CPCL | 17 | [cpcl-cheatsheet.md](cpcl-cheatsheet.md) |
 
 ## Which language am I looking at?
@@ -37,6 +37,9 @@ context:
 - **recognised, not rendered (printer behaviour)** — the command
   changes the mechanism (darkness, speed, feed direction, media
   tracking), which a screen render cannot honestly reproduce.
+- **recognised, not rendered (stored form / variable)** — EPL
+  `FS`/`FR`/`V`/`?` read or write the printer's form memory; a
+  preview has none, so paste the `FS`…`FE` block itself to see it.
 
 ## License
 

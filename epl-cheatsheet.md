@@ -23,9 +23,15 @@ first character is the command.
 
 | Command | Syntax | Example | Preview coverage |
 | --- | --- | --- | --- |
+| `?` | `?` | `?` | recognised, not rendered (stored form / variable — a preview has no printer memory) |
 | `A` | `Ax,y,rot,font,hm,vm,N/R,"text"` | `A50,50,0,4,1,1,N,"HELLO"` | rendered (with documented limits) |
 | `B` | `Bx,y,rot,type,narrow,wide,h,B/N,"data"` | `B50,150,0,1,3,7,120,B,"123456"` | rendered (with documented limits) |
 | `D` | `D<density>` | `D8` | recognised, not rendered (printer behaviour) |
+| `FE` | `FE` | `FE` | recognised, not rendered (stored form / variable — a preview has no printer memory) |
+| `FI` | `FI` | `FI` | recognised, not rendered (stored form / variable — a preview has no printer memory) |
+| `FK` | `FK<"FORMNAME" | "*">` | `FK"FORM1"` | recognised, not rendered (stored form / variable — a preview has no printer memory) |
+| `FR` | `FR<"FORMNAME">` | `FR"FORM1"` | recognised, not rendered (stored form / variable — a preview has no printer memory) |
+| `FS` | `FS<"FORMNAME">` | `FS"FORM1"` | recognised, not rendered (stored form / variable — a preview has no printer memory) |
 | `I` | `I8,A,001` | `I8,A,001` | recognised, not rendered (printer behaviour) |
 | `JF` | `JF` | `JF` | recognised, not rendered (printer behaviour) |
 | `LO` | `LOx,y,w,h` | `LO50,300,700,4` | rendered |
@@ -33,7 +39,9 @@ first character is the command.
 | `N` | `N` | `N` | rendered |
 | `P` | `P<n>` | `P2` | rendered |
 | `Q` | `Q<h>,<gap>` | `Q1218,24` | rendered |
+| `R` | `Rx,y` | `R16,0` | rendered |
 | `S` | `S<speed>` | `S3` | recognised, not rendered (printer behaviour) |
+| `V` | `V<nn>,<len>,<L|R|C|N>,<"PROMPT">` | `V00,15,N,"Product:"` | recognised, not rendered (stored form / variable — a preview has no printer memory) |
 | `X` | `Xx1,y1,t,x2,y2` | `X40,40,4,760,400` | rendered |
 | `ZB` | `ZB` | `ZB` | recognised, not rendered (printer behaviour) |
 | `ZT` | `ZT` | `ZT` | recognised, not rendered (printer behaviour) |
